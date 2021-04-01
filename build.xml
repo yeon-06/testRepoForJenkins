@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<!-- 이전 코드 <project name="testProject" default="main" basedir="."> <target 
+	name="main"> <javac srcdir="./src" destdir="./bin" includeantruntime="false"> 
+	</javac> <java classpath="./bin" classname="testProject.HelloWorld"> </java> 
+	</target> </project> -->
+
+<project name="testProject" default="main" basedir=".">
+
+	<!--compile 전에 실행하는 선행 작업들 -->
+	<target name="init">
+		<!--변수 선언 -->
+		<property name="src" location="src" />
+		<property name="bin" location="bin" />
+		<property name="lib" location="/WEB-INF/lib" />
+		<property name="war.name" location="testProject.war" />
+		<property name="web" location="WebContent" />
+
+		<!--bin 폴더가 없으면 생성 -->
+		<mkdir dir="${bin}" />
+
+		<!--Format 설정 -->
+		<tstamp>
+			<format property="DSTAMP" pattern="yyyyHHdd" />
+			<format property="TSTAMP" pattern="HHmm" />
+		</tstamp>
+	</target>
+
+	<!--javac를 이용해 java파일->class파일 -->
+	<target name="compile" depends="init"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
+		<!--src 폴더의 bin 폴더에 있는 클래스들 내려 받기 -->
+		<javac srcdir="${src}" destdir="${bin}" includeantruntime="false">
+		</javac>
+	</target>
+
+	<!--java코드 실행 -->
+	<target name="main" depends="clean,compile,war">
+		<java classpath="${bin}" classname="testProject.HelloWorld">
+		</java>
+	</target>
+
+	<!-- war 생성 -->
+	<target name="war" depends="compile">
+		<!--dist 폴더에 format한 ${DSTAMP}.war 로 생성 -->
+		<war destfile="${bin}/${DSTAMP}.war" webxml="${web}/WEB-INF/web.xml">
+
+			<!--${web} -> WebContent( property에 설정) 에 web.xml 제외한 나머지 모두 war로 생성 -->
+			<fileset dir="${web}">
+				<include name="**/*.*" />
+				<exclude name="WEB-INF/web.xml" />
+			</fileset>
+		</war>
+	</target>
+
+	<target name="clean">
+		<delete dir="${bin}" /> <!--폴더 삭제 -->
+	</target>
+
+</project>

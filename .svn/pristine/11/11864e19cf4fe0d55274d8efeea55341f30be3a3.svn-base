@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<project name="testProject" default="main" basedir=".">
+    <target name="main">
+        <javac srcdir="./src" destdir="./bin" includeantruntime="false">
+        </javac>
+        <java classpath="./bin" classname="testProject.HelloWorld">
+        </java>
+    </target>
+</project>
