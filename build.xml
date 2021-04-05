@@ -16,6 +16,15 @@
 		<property name="war.name" location="testProject.war" />
 		<property name="web" location="WebContent" />
 
+		<property name="sonar.host.url" value="http://localhost:9000" />
+
+		<property name="sonar.projectKey" value="org.sonarqube:sonarqube-scanner-ant" />
+		<property name="sonar.projectName" value="Example of SonarQube Scanner for Ant Usage" />
+		<property name="sonar.projectVersion" value="1.0" />
+		<property name="sonar.sources" value="src" />
+		<property name="sonar.java.binaries" value="build" />
+		<property name="sonar.java.libraries" value="lib/*.jar" />
+		
 		<!--bin 폴더가 없으면 생성 -->
 		<mkdir dir="${bin}" />
 
@@ -27,7 +36,7 @@
 	</target>
 
 	<!--javac를 이용해 java파일->class파일 -->
-	<target name="compile" depends="init"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
+	<target name="compile" depends="init,sonar"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
 		<!--src 폴더의 bin 폴더에 있는 클래스들 내려 받기 -->
 		<javac srcdir="${src}" destdir="${bin}" includeantruntime="false">
 		</javac>
@@ -56,4 +65,13 @@
 		<delete dir="${bin}" /> <!--폴더 삭제 -->
 	</target>
 
+	<target name="sonar">
+	    <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+	        <!-- Update the following line, or put the "sonarqube-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
+	        <classpath path="path/to/sonar/ant/task/lib/sonarqube-ant-task-*.jar" />
+	    </taskdef>
+	 
+	    <!-- Execute SonarScanner for Ant Analysis -->
+		<sonar:sonar xmlns:sonar="antlib:org.sonar.ant" />
+	</target>
 </project>
