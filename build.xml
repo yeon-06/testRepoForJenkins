@@ -20,12 +20,13 @@
 		<property name="sonar.host.url" value="http://localhost:9000" />
 		 
 		<!-- Define the SonarQube project properties -->
-		<property name="sonar.projectKey" value="org.sonarqube:sonarqube-scanner-ant" />
+		<property name="sonar.projectKey" value="test" />
 		<property name="sonar.projectName" value="test" />
 		<property name="sonar.projectVersion" value="1.0" />
 		<property name="sonar.sources" value="src" />
 		<property name="sonar.java.binaries" value="build" />
 		<property name="sonar.java.libraries" value="lib/*.jar" />
+		<property name="sonar.login" value="441497230decb58fc8c0c0c07eb87b45e247b17c" />
 
 		<!--bin 폴더가 없으면 생성 -->
 		<mkdir dir="${bin}" />
