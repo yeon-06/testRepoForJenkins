@@ -5,7 +5,7 @@
 	</javac> <java classpath="./bin" classname="testProject.HelloWorld"> </java> 
 	</target> </project> -->
 
-<project name="testProject" default="main" basedir=".">
+<project name="testProject" default="main" basedir="." xmlns:sonar="antlib:org.sonar.ant">
 
 	<!--compile 전에 실행하는 선행 작업들 -->
 	<target name="init">
@@ -15,16 +15,18 @@
 		<property name="lib" location="/WEB-INF/lib" />
 		<property name="war.name" location="testProject.war" />
 		<property name="web" location="WebContent" />
-
+		
+		<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
 		<property name="sonar.host.url" value="http://localhost:9000" />
-
+		 
+		<!-- Define the SonarQube project properties -->
 		<property name="sonar.projectKey" value="org.sonarqube:sonarqube-scanner-ant" />
-		<property name="sonar.projectName" value="Example of SonarQube Scanner for Ant Usage" />
+		<property name="sonar.projectName" value="test" />
 		<property name="sonar.projectVersion" value="1.0" />
 		<property name="sonar.sources" value="src" />
 		<property name="sonar.java.binaries" value="build" />
 		<property name="sonar.java.libraries" value="lib/*.jar" />
-		
+
 		<!--bin 폴더가 없으면 생성 -->
 		<mkdir dir="${bin}" />
 
@@ -65,13 +67,14 @@
 		<delete dir="${bin}" /> <!--폴더 삭제 -->
 	</target>
 
+	<!-- Define SonarScanner for Ant Target -->
 	<target name="sonar">
 	    <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
 	        <!-- Update the following line, or put the "sonarqube-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
-	        <classpath path="path/to/sonar/ant/task/lib/sonarqube-ant-task-*.jar" />
+	        <classpath path="C:/Ant/apache-ant-1.9.15/lib/sonarqube-ant-task-*.jar" />
 	    </taskdef>
 	 
 	    <!-- Execute SonarScanner for Ant Analysis -->
-		<sonar:sonar xmlns:sonar="antlib:org.sonar.ant" />
+	    <sonar:sonar />
 	</target>
 </project>
