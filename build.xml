@@ -27,6 +27,7 @@
 		<property name="sonar.java.binaries" value="build" />
 		<property name="sonar.java.libraries" value="lib/*.jar" />
 		<property name="sonar.login" value="441497230decb58fc8c0c0c07eb87b45e247b17c" />
+		<property name="sonar.scm.provider" value="git" />
 
 		<!--bin 폴더가 없으면 생성 -->
 		<mkdir dir="${bin}" />
