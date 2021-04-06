@@ -49,7 +49,7 @@
 	<!--리포트 생성-->
 	<target name="junit4" depends="compile">
 	    <junit printsummary="on" fork="false" haltonfailure="false">
-	      	<classpath refid=".project"/>
+	      	<classpath refid=".classpath"/>
 	      	<formatter type="xml"/>
 	      	<batchtest todir="${bin}">
 	        	<fileset dir="${src}">
