@@ -15,7 +15,7 @@
 		<property name="lib" location="WebContent/WEB-INF/lib" />
 		<property name="war.name" location="testProject.war" />
 		<property name="web" location="WebContent" />
-		<property name="javac.test.classpath" location="WebContent/WEB-INF/lib/junit-*.jar" />
+		<!--<property name="javac.test.classpath" location="WebContent/WEB-INF/lib/junit-*.jar" />-->
 		
 		<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
 		<property name="sonar.host.url" value="http://localhost:9000" />
@@ -80,4 +80,12 @@
 	    <!-- Execute SonarScanner for Ant Analysis -->
 	    <sonar:sonar />
 	</target>
+	
+	<junit printsummary="yes" haltonfailure="yes">
+	    <classpath>
+	        <fileset dir="WebContent/WEB-INF/lib">
+	            <include name="junit-*.jar" />
+	        </fileset>
+	    </classpath>
+	</junit>
 </project>
