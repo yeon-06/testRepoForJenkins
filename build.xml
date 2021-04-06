@@ -1,10 +1,5 @@
 <?xml version="1.0"?>
 
-<!-- 이전 코드 <project name="testProject" default="main" basedir="."> <target 
-	name="main"> <javac srcdir="./src" destdir="./bin" includeantruntime="false"> 
-	</javac> <java classpath="./bin" classname="testProject.HelloWorld"> </java> 
-	</target> </project> -->
-
 <project name="testProject" default="main" basedir="." xmlns:sonar="antlib:org.sonar.ant">
 
 	<!--compile 전에 실행하는 선행 작업들 -->
@@ -50,7 +45,29 @@
 		<javac srcdir="${src}" destdir="${bin}" includeantruntime="true" classpathref="lib.jar">
 		</javac>
 	</target>
+	
+	<!--리포트 생성-->
+	<target name="junit4" depends="compile">
+	    <junit printsummary="on" fork="false" haltonfailure="false">
+	      	<classpath refid="classpath.project"/>
+	      	<formatter type="xml"/>
+	      	<batchtest todir="${bin}">
+	        	<fileset dir="${src}">
+	          		<include name="**/JUnitTest.java"/>
+	        	</fileset>
+	      	</batchtest>
+	    </junit>
 
+	    <junitreport todir="${bin}">
+	      	<fileset dir="${bin}">
+	        	<include name="TEST-*.xml"/>
+	      	</fileset>
+	      	<report format="frames" todir="${bin}"/>
+	    </junitreport>
+
+	    
+	  </target>
+	
 	<!--java코드 실행 -->
 	<target name="main" depends="clean,compile,war">
 		<java classpath="${bin}" classname="testProject.HelloWorld">
