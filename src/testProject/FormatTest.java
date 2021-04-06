@@ -9,5 +9,7 @@ public class FormatTest {
 		  
 		String result = MessageFormat.format(pattern, arguments);
 		System.out.println(result);
+		
+		String temp = "사용하지 않는 변수";
 	}
 }
