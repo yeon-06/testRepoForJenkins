@@ -52,7 +52,9 @@
 	      	<classpath refid="lib.jar"/>
 	      	<formatter type="xml"/>
 	      	<batchtest todir="${bin}/testProject">
-	        	<fileset dir="${src}/testProject" includes="JUnit*.java />
+	        	<fileset dir="${src}/testProject">
+	          		<include name="JUnitTest.java"/>
+	        	</fileset>
 	      	</batchtest>
 	    </junit>
 
