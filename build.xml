@@ -15,6 +15,7 @@
 		<property name="lib" location="/WEB-INF/lib" />
 		<property name="war.name" location="testProject.war" />
 		<property name="web" location="WebContent" />
+		<property name="javac.test.classpath" location="/WEB-INF/lib" />
 		
 		<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
 		<property name="sonar.host.url" value="http://localhost:9000" />
@@ -25,7 +26,7 @@
 		<property name="sonar.projectVersion" value="1.0" />
 		<property name="sonar.sources" value="src" />
 		<property name="sonar.java.binaries" value="bin" />
-		<property name="sonar.java.libraries" value="lib/*.jar" />
+		<property name="sonar.java.libraries" value="/WEB-INF/lib/*.jar" />
 		<property name="sonar.login" value="441497230decb58fc8c0c0c07eb87b45e247b17c" />
 		<property name="sonar.scm.provider" value="git" />
 
