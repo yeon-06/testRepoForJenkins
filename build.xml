@@ -49,7 +49,10 @@
 	<!--리포트 생성-->
 	<target name="junit4" depends="compile">
 	    <junit printsummary="on" fork="false" haltonfailure="false">
-	      	<classpath refid="WebContent/WEB-INF/lib/*.jar"/>
+		<path id="lib.jar">
+		    <fileset dir="WebContent/WEB-INF/lib" includes="*.jar" />
+		</path>
+	      	<classpath refid="lib.jar"/>
 	      	<formatter type="xml"/>
 	      	<batchtest todir="${bin}/testProject">
 	        	<fileset dir="${src}/testProject">
