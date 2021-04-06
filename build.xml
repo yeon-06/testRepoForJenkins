@@ -42,8 +42,12 @@
 
 	<!--javac를 이용해 java파일->class파일 -->
 	<target name="compile" depends="init,sonar"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
+		<path id="lib.jar">
+		    <fileset dir="WebContent/WEB-INF/lib" includes="*.jar" />
+		</path>
+		
 		<!--src 폴더의 bin 폴더에 있는 클래스들 내려 받기 -->
-		<javac srcdir="${src}" destdir="${bin}" includeantruntime="false" classpath="WebContent/WEB-INF/lib/*.jar">
+		<javac srcdir="${src}" destdir="${bin}" includeantruntime="true" classpathref="lib.jar">
 		</javac>
 	</target>
 
