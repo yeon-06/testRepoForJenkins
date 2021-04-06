@@ -51,7 +51,7 @@
 	    <junit printsummary="on" fork="false" haltonfailure="false">
 	      	<classpath refid="lib.jar"/>
 	      	<formatter type="xml"/>
-	      	<batchtest todir="${bin}/testProject">
+	      	<batchtest>
 	        	<fileset dir="${src}/testProject">
 	          		<include name="JUnitTest.java"/>
 	        	</fileset>
