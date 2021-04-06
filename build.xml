@@ -51,9 +51,9 @@
 	    <junit printsummary="on" fork="false" haltonfailure="false">
 	      	<classpath refid="WebContent/WEB-INF/lib/*.jar"/>
 	      	<formatter type="xml"/>
-	      	<batchtest todir="${bin}">
-	        	<fileset dir="${src}">
-	          		<include name="**/JUnitTest.java"/>
+	      	<batchtest todir="${bin}/testProject">
+	        	<fileset dir="${src}/testProject">
+	          		<include name="JUnitTest.java"/>
 	        	</fileset>
 	      	</batchtest>
 	    </junit>
