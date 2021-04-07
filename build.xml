@@ -57,12 +57,13 @@
 	        	</fileset>
 	      	</batchtest>
 	    </junit>
-
-	    <junitreport todir="${bin}">
-	      	<fileset dir="${bin}">
+	  
+	    <mkdir dir="report" />
+	    <junitreport todir="report">
+	      	<fileset dir="report">
 	        	<include name="TEST-*.xml"/>
 	      	</fileset>
-	      	<report format="frames" todir="${bin}"/>
+	      	<report format="frames" todir="report"/>
 	    </junitreport>
 	</target>
 	
