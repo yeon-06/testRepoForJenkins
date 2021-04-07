@@ -56,8 +56,7 @@
 	      	<formatter type="xml"/>
 	      	<batchtest todir="report">
 	        	<fileset dir="${src}/testProject">
-	          		<include name="**/JUnit*.java"/>
-				<include name="**/Calculator.java"/>
+	          		<include name="JUnit*.java"/>
 	        	</fileset>
 	      	</batchtest>
 	    </junit>
