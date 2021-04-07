@@ -60,7 +60,7 @@
 	  
 	    <mkdir dir="report" />
 	    <junitreport todir="report">
-	      	<fileset dir="report">
+	      	<fileset dir="${bin}/testProject">
 	        	<include name="TEST-*.xml"/>
 	      	</fileset>
 	      	<report format="frames" todir="report"/>
