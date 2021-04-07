@@ -51,9 +51,9 @@
 	    <junit printsummary="on" fork="false" haltonfailure="false">
 	      	<classpath refid="lib.jar"/>
 	      	<formatter type="xml"/>
-	      	<batchtest>
+	      	<batchtest todir="${bin}/testProject">
 	        	<fileset dir="${src}/testProject">
-	          		<include name="JUnitTest.java"/>
+	          		<include name="**/JUnit*.java"/>
 	        	</fileset>
 	      	</batchtest>
 	    </junit>
@@ -64,9 +64,7 @@
 	      	</fileset>
 	      	<report format="frames" todir="${bin}"/>
 	    </junitreport>
-
-	    
-	  </target>
+	</target>
 	
 	<!--java코드 실행 -->
 	<target name="main" depends="clean,war">
