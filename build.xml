@@ -57,6 +57,7 @@
 	      	<batchtest todir="report">
 	        	<fileset dir="${src}/testProject">
 	          		<include name="**/JUnit*.java"/>
+				<include name="**/Calculator.java"/>
 	        	</fileset>
 	      	</batchtest>
 	    </junit>
