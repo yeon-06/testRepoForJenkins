@@ -37,27 +37,30 @@
 
 	<!--javac를 이용해 java파일->class파일 -->
 	<target name="compile" depends="init,sonar"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
-		<path id="lib.jar">
+		<path id="junit.jar">
 		    <fileset dir="WebContent/WEB-INF/lib" includes="*.jar" />
 		</path>
 		
-		<!--src 폴더의 bin 폴더에 있는 클래스들 내려 받기 -->
-		<javac srcdir="${src}" destdir="${bin}" includeantruntime="true" classpathref="lib.jar">
-		</javac>
+		<javac srcdir="src/test" destdir="${bin}" debug="on">
+            <classpath refid="junit.jar"/>
+            <include name="JUnit*.java"/>
+        </javac>
+		
+		<javac srcdir="src/testProject" destdir="${bin}" debug="on">
+            <include name="*.java"/>
+        </javac>
 	</target>
 	
 	<!--리포트 생성-->
 	<target name="junit4" depends="compile">
 	    <delete dir="report" />
 	    <mkdir dir="report" />
-	    <path id="junit.jar">
-		<fileset dir="WebContent/WEB-INF/lib" includes="junit-4.11.jar" />
-	    </path>
+	    
 	    <junit printsummary="on" fork="false" haltonfailure="false">
 	      	<classpath refid="junit.jar"/>
 	      	<formatter type="xml"/>
 		<batchtest todir="report">
-	        	<fileset dir="src/testProject">
+	        	<fileset dir="src/test">
 	          		<include name="JUnit*.java"/>
 	        	</fileset>
 	      	</batchtest>
