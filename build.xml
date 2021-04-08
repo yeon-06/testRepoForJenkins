@@ -55,7 +55,7 @@
 	      	<classpath refid="junit.jar"/>
 	      	<formatter type="xml"/>
 	      	<batchtest todir="report">
-	        	<fileset dir="${src}/testProject">
+	        	<fileset dir="test">
 	          		<include name="JUnit*.java"/>
 	        	</fileset>
 	      	</batchtest>
