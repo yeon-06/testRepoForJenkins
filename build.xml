@@ -63,13 +63,14 @@
 	        	</fileset>
 	      	</batchtest>-->
 	    </junit>
-	  
+	  <!--
 	    <junitreport todir="report">
 	      	<fileset dir="report">
 	        	<include name="TEST-*.xml"/>
 	      	</fileset>
 	      	<report format="frames" todir="report"/>
 	    </junitreport>
+-->
 	</target>
 	
 	<!--java코드 실행 -->
