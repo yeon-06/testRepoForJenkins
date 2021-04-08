@@ -41,12 +41,12 @@
 		    <fileset dir="WebContent/WEB-INF/lib" includes="*.jar" />
 		</path>
 		
-		<javac srcdir="src/test" destdir="${bin}" debug="on">
+		<javac srcdir="src/test" destdir="${bin}" debug="on" includeantruntime="false">
             <classpath refid="junit.jar"/>
             <include name="JUnit*.java"/>
         </javac>
 		
-		<javac srcdir="src/testProject" destdir="${bin}" debug="on">
+		<javac srcdir="src/testProject" destdir="${bin}" debug="on" includeantruntime="false">
             <include name="*.java"/>
         </javac>
 	</target>
@@ -59,7 +59,8 @@
 	    <junit printsummary="on" fork="false" haltonfailure="false">
 	      	<classpath refid="junit.jar"/>
 	      	<formatter type="xml"/>
-		<batchtest todir="report">
+	    	
+			<batchtest todir="report">
 	        	<fileset dir="src/test">
 	          		<include name="JUnit*.java"/>
 	        	</fileset>
