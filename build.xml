@@ -56,21 +56,19 @@
 	    <junit printsummary="on" fork="false" haltonfailure="false">
 	      	<classpath refid="junit.jar"/>
 	      	<formatter type="xml"/>
-		<test name="src/testProject/JUnitTest.java" />
-		<!--<batchtest todir="report">
+		<batchtest todir="report">
 	        	<fileset dir="src/testProject">
 	          		<include name="JUnit*.java"/>
 	        	</fileset>
-	      	</batchtest>-->
+	      	</batchtest>
 	    </junit>
-	  <!--
+	  
 	    <junitreport todir="report">
 	      	<fileset dir="report">
 	        	<include name="TEST-*.xml"/>
 	      	</fileset>
 	      	<report format="frames" todir="report"/>
 	    </junitreport>
--->
 	</target>
 	
 	<!--java코드 실행 -->
