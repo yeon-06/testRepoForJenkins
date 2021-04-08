@@ -39,12 +39,11 @@
 	<target name="compile" depends="init,sonar"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
 		<path id="junit.jar">
 		    <fileset dir="WebContent/WEB-INF/lib" includes="*.jar" />
-		    <fileset dir="src/test" includes="Calculator.java" />
 		</path>
 		
 		<javac srcdir="src/test" destdir="${bin}" debug="on" includeantruntime="false">
             <classpath refid="junit.jar"/>
-            <include name="JUnit*.java"/>
+            <include name="*.java"/>
         </javac>
 		
 		<javac srcdir="src/testProject" destdir="${bin}" debug="on" includeantruntime="false">
