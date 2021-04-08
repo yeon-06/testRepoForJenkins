@@ -48,20 +48,22 @@
 	
 	<!--리포트 생성-->
 	<target name="junit4" depends="compile">
+	    <delete dir="report" />
+	    <mkdir dir="report" />
 	    <path id="junit.jar">
 		<fileset dir="WebContent/WEB-INF/lib" includes="junit-4.11.jar" />
 	    </path>
 	    <junit printsummary="on" fork="false" haltonfailure="false">
 	      	<classpath refid="junit.jar"/>
 	      	<formatter type="xml"/>
-	      	<batchtest todir="report">
+		<test name="src/testProject/JUnitTest.java" />
+		<!--<batchtest todir="report">
 	        	<fileset dir="src/testProject">
 	          		<include name="JUnit*.java"/>
 	        	</fileset>
-	      	</batchtest>
+	      	</batchtest>-->
 	    </junit>
 	  
-	    <mkdir dir="report" />
 	    <junitreport todir="report">
 	      	<fileset dir="report">
 	        	<include name="TEST-*.xml"/>
