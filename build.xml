@@ -25,7 +25,7 @@
 	<!--javac를 이용해 java파일->class파일 -->
 	<target name="compile" depends="init"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
 		<path id="junit.jar">
-		    <fileset dir="WebContent/WEB-INF/lib" includes="*.jar" />
+		    <fileset dir="WebContent/WEB-INF" includes="*.jar" />
 		</path>
 		
 		<javac srcdir="src/test" destdir="${bin}" debug="on" includeantruntime="false">
@@ -44,7 +44,7 @@
 	    <mkdir dir="report" />
 	    
 	    <junit printsummary="on" fork="false" haltonfailure="false">
-	      	<!--<classpath refid="junit.jar"/>-->
+	      	<classpath refid="junit.jar"/>
 	      	<formatter type="xml"/>
 	    	
 			<batchtest todir="report">
