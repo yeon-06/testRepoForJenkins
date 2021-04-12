@@ -44,7 +44,7 @@
 	    <mkdir dir="report" />
 	    
 	    <junit printsummary="on" fork="false" haltonfailure="false">
-	      	<classpath refid="junit.jar"/>
+	      	<!--<classpath refid="junit.jar"/>-->
 	      	<formatter type="xml"/>
 	    	
 			<batchtest todir="report">
