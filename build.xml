@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="testProject" default="main" basedir="." xmlns:sonar="antlib:org.sonar.ant">
+<project name="testProject" default="main" basedir=".">
 
 	<!--compile 전에 실행하는 선행 작업들 -->
 	<target name="init">
@@ -11,19 +11,6 @@
 		<property name="war.name" location="testProject.war" />
 		<property name="web" location="WebContent" />
 		<!--<property name="javac.test.classpath" location="WebContent/WEB-INF/lib/junit-*.jar" />-->
-		
-		<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
-		<property name="sonar.host.url" value="http://localhost:9000" />
-		 
-		<!-- Define the SonarQube project properties -->
-		<property name="sonar.projectKey" value="test" />
-		<property name="sonar.projectName" value="test" />
-		<property name="sonar.projectVersion" value="1.0" />
-		<property name="sonar.sources" value="src" />
-		<property name="sonar.java.binaries" value="bin" />
-		<property name="sonar.java.libraries" value="WebContent/WEB-INF/lib/*.jar" />
-		<property name="sonar.login" value="441497230decb58fc8c0c0c07eb87b45e247b17c" />
-		<property name="sonar.scm.provider" value="git" />
 
 		<!--bin 폴더가 없으면 생성 -->
 		<mkdir dir="${bin}" />
@@ -36,7 +23,7 @@
 	</target>
 
 	<!--javac를 이용해 java파일->class파일 -->
-	<target name="compile" depends="init,sonar"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
+	<target name="compile" depends="init"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
 		<path id="junit.jar">
 		    <fileset dir="WebContent/WEB-INF/lib" includes="*.jar" />
 		</path>
@@ -98,14 +85,4 @@
 		<delete dir="${bin}" /> <!--폴더 삭제 -->
 	</target>
 
-	<!-- Define SonarScanner for Ant Target -->
-	<target name="sonar">
-	    <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
-	        <!-- Update the following line, or put the "sonarqube-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
-	        <classpath path="C:/Ant/apache-ant-1.9.15/lib/sonarqube-ant-task-*.jar" />
-	    </taskdef>
-	 
-	    <!-- Execute SonarScanner for Ant Analysis -->
-	    <sonar:sonar />
-	</target>
 </project>
