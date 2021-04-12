@@ -48,16 +48,12 @@
 	      	<formatter type="xml"/>
 	    	
 			<batchtest todir="report">
-	        	<fileset dir="src/test">
-	          		<include name="JUnit*.java"/>
-	        	</fileset>
+	        	<fileset dir="src/test" includes="JUnit*.java" />
 	      	</batchtest>
 	    </junit>
 	  
 	    <junitreport todir="report">
-	      	<fileset dir="report">
-	        	<include name="TEST-*.xml"/>
-	      	</fileset>
+	      	<fileset dir="report" includes="TEST-*.xml" />
 	      	<report format="frames" todir="report"/>
 	    </junitreport>
 	</target>
