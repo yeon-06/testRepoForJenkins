@@ -48,7 +48,7 @@
 	      	<formatter type="xml"/>
 	    	
 			<batchtest todir="report">
-	        	<fileset dir="src/test" includes="JUnit*.java" />
+	        	<fileset dir="src/test" includes="**/JUnit*.java" />
 	      	</batchtest>
 	    </junit>
 	  
