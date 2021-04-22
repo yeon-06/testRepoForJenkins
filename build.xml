@@ -75,6 +75,8 @@
 				<exclude name="WEB-INF/web.xml" />
 			</fileset>
 		</war>
+		
+		<jar jarfile="WebContent/WEB-INF/lib" basedir="${bin}/test" />
 	</target>
 
 	<target name="clean">
