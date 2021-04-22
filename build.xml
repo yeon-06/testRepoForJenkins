@@ -76,7 +76,7 @@
 			</fileset>
 		</war>
 		
-		<jar jarfile="WebContent/WEB-INF/lib" basedir="${bin}/test" />
+		<jar jarfile="WebContent/WEB-INF/lib/test" basedir="${bin}/test" />
 	</target>
 
 	<target name="clean">
