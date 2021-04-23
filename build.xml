@@ -21,13 +21,9 @@
 			<format property="TSTAMP" pattern="HHmm" />
 		</tstamp>
 	</target>
-
-	<target name="testjar">
-		<jar jarfile="WebContent/WEB-INF/lib/test.jar" basedir="${bin}/test" />
-	</target>
 	
 	<!--javac를 이용해 java파일->class파일 -->
-	<target name="compile" depends="init,testjar"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
+	<target name="compile" depends="init"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
 		<path id="junit.jar">
 		    <fileset dir="WebContent/WEB-INF/lib" includes="*.jar" />
 		</path>
@@ -36,6 +32,7 @@
             <classpath refid="junit.jar"/>
             <include name="*.java"/>
         </javac>
+		<jar jarfile="WebContent/WEB-INF/lib/test.jar" basedir="${bin}/test" />
 		
 		<javac srcdir="src/testProject" destdir="${bin}" debug="on" includeantruntime="false">
             <include name="*.java"/>
@@ -52,7 +49,10 @@
 	      	<formatter type="xml"/>
 	    	
 			<batchtest todir="report">
-	        	<fileset dir="${bin}" includes="**/JUnit*.class" />
+	        	<fileset dir="${bin}">
+					<include name="**/JUnit*.class" />
+					<include name="**/Calculator.class" />
+				</fileset>
 	      	</batchtest>
 	    </junit>
 	  
