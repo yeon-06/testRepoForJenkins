@@ -36,6 +36,8 @@
 		<javac srcdir="src/testProject" destdir="${bin}" debug="on" includeantruntime="false">
             <include name="*.java"/>
         </javac>
+		
+		<jar jarfile="WebContent/WEB-INF/lib/test.jar" basedir="${bin}/test" />
 	</target>
 	
 	<!--리포트 생성-->
@@ -75,8 +77,6 @@
 				<exclude name="WEB-INF/web.xml" />
 			</fileset>
 		</war>
-		
-		<jar jarfile="WebContent/WEB-INF/lib/test.jar" basedir="${bin}/test" />
 	</target>
 
 	<target name="clean">
