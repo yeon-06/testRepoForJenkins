@@ -31,7 +31,7 @@
             <classpath refid="junit.jar"/>
             <include name="*.java"/>
         </javac>
-		<jar jarfile="WebContent/WEB-INF/lib/test.jar" basedir="${bin}/test" />
+		<jar jarfile="WebContent/WEB-INF/lib/test.jar" basedir="${bin}" />
 		
 		<javac srcdir="src/testProject" destdir="${bin}" debug="on" includeantruntime="false">
             <include name="*.java"/>
