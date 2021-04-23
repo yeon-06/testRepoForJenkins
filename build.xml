@@ -22,8 +22,12 @@
 		</tstamp>
 	</target>
 
+	<target name="testjar">
+		<jar jarfile="WebContent/WEB-INF/lib/test.jar" basedir="${bin}/test" />
+	</target>
+	
 	<!--javac를 이용해 java파일->class파일 -->
-	<target name="compile" depends="init"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
+	<target name="compile" depends="init,testjar"> <!--depends: target 작업을 하기 전에 선행 되어야 함. init작업이 먼저 실행 되어야 함. -->
 		<path id="junit.jar">
 		    <fileset dir="WebContent/WEB-INF/lib" includes="*.jar" />
 		</path>
@@ -36,8 +40,6 @@
 		<javac srcdir="src/testProject" destdir="${bin}" debug="on" includeantruntime="false">
             <include name="*.java"/>
         </javac>
-		
-		<jar jarfile="WebContent/WEB-INF/lib/test.jar" basedir="${bin}/test" />
 	</target>
 	
 	<!--리포트 생성-->
