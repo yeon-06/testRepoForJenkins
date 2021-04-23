@@ -10,7 +10,6 @@
 		<property name="lib" location="WebContent/WEB-INF/lib" />
 		<property name="war.name" location="testProject.war" />
 		<property name="web" location="WebContent" />
-		<!--<property name="javac.test.classpath" location="WebContent/WEB-INF/lib/junit-*.jar" />-->
 
 		<!--bin 폴더가 없으면 생성 -->
 		<mkdir dir="${bin}" />
@@ -28,7 +27,7 @@
 		    <fileset dir="WebContent/WEB-INF/lib" includes="*.jar" />
 		</path>
 		
-		<javac srcdir="src/test" destdir="${bin}" debug="on" includeantruntime="false">
+		<javac srcdir="test" destdir="${bin}" debug="on" includeantruntime="false">
             <classpath refid="junit.jar"/>
             <include name="*.java"/>
         </javac>
@@ -51,7 +50,6 @@
 			<batchtest todir="report">
 	        	<fileset dir="${bin}">
 					<include name="**/JUnit*.class" />
-					<include name="**/Calculator.class" />
 				</fileset>
 	      	</batchtest>
 	    </junit>
